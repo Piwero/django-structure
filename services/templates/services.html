@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Services {% endblock %}
+
+{% block content %}
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Heading Row -->
+    <div class="row align-items-center my-5">
+      <div class="col-lg-3">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'logo/small_logo.png' %}" alt="piwero_small_logo">
+
+      </div>
+      <!-- /.col-lg-8 -->
+      <div class="col-lg-9">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron h-md-50 mx-2">
+          <h1 class="text-right"> Services</h1>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <!-- Content Row -->
+      <div class="row">
+      {% for service in services %}
+
+      <div class="col-md-4 mb-5">
+          <div class="card mb-3 h-100">
+          <div class="card-body">
+            <h2 class="card-title">{{service.title}}</h2>
+            <p class="card-text">{{service.content}}</p>
+            <img src="{{service.image.url}}" class="card-img-bottom" alt="service image">
+          </div>
+
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">More Info</a>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+         </div>
+
+
+
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+  </div>
+{% endblock %}
