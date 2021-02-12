@@ -6,5 +6,5 @@ from services.models import Service
 
 def service(request):
     services = Service.objects.all()
-    return render(request, 'service.html', {"services": services})
+    return render(request, 'services.html', {"services": services})
 
