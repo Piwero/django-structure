@@ -1,10 +1,9 @@
-
-from django.contrib import admin
 from django.urls import path
-from .views import service
+from .views import contact
+
 
 urlpatterns = [
-    path('', service, name='service'),
+    path('', contact, name='contact'),
 
 ]
 
