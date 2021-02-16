@@ -7,7 +7,7 @@ class ContactForm(forms.Form):
     email = forms.EmailField(label="Email", required=True)
     subject = forms.CharField(label="Subject", required=True, max_length=50)
     message = forms.CharField(label="Message", widget=forms.Textarea)
-    upload = forms.FileField()
+    #upload = forms.FileField()
 
     class Meta:
         document = Document

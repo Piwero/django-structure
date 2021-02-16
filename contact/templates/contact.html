@@ -37,6 +37,7 @@
     <form action="" method="POST" enctype="multipart/form-data" style="text-align: center;">
         {% csrf_token %}
         <table style="color: dark; margin:20px auto;">{{form.as_table}}</table>
+         <input type="file" name="file" required><br>
         <input type="submit" value="Send" style="width: 150px;">
 
     </form>
