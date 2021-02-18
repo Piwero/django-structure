@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "myproject.coreapp",
     "services",
     "contact",
+    "authentication",
 ]
 
 MIDDLEWARE = [
