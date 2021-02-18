@@ -18,12 +18,20 @@ def contact(request):
             email = request.POST.get("email")
             subject = request.POST.get("subject")
             message = request.POST.get("message")
-            upload = request.POST.get("upload")
+            upload = request.FILES.get("upload")
+            content = f"Message from django-structure project,\
+            The user with name {name}, with the email {email},\
+             write the following: \n Subject: {subject}\n\n\n \
+             Message: {message}"
 
-            email_content= EmailMessage("Message from django-structure project",
-                                        f"The user with name {name}, with the email {email},"
-                                        f" write the following: \n Subject: {subject} \n File{upload} \n\n Message: {message}",
-                                 "", [config('EMAIL_TO')], reply_to=[email])
+            email_content= EmailMessage(
+                subject=subject,
+                body=content,
+                from_email= "",
+                to=[config('EMAIL_TO')],
+                attachments=[(upload.name, upload.read(), upload.content_type)],
+                reply_to=[email]
+            )
             try:
                 email_content.send()
 
