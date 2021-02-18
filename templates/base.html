@@ -24,6 +24,10 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="{% url 'home' %}">Piwero Ltd</a>
+      {% if user.is_authenticated %}
+      <strong class="text-white";>You are logged as: {{ user.username }}</strong>
+      {% endif %}
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,12 +39,19 @@
             </a>
           </li>
           </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item {% if request.path == '/auth/logout/' %} active {% endif %}">
+            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+          </li>
+          {% else %}
           <li class="nav-item {% if request.path == '/auth/signup/' %} active {% endif %}">
             <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
           </li>
-          <li class="nav-item {% if request.path == '/auth/accounts/login/' %} active {% endif %}">
+          <li class="nav-item {% if request.path == '/auth/login/' %} active {% endif %}">
             <a class="nav-link" href="{% url 'login' %}">Log In</a>
           </li>
+          {% endif %}
+
           <li class="nav-item {% if request.path == '/services/' %} active {% endif %}">
             <a class="nav-link" href="{% url 'service' %}">Services</a>
           </li>
