@@ -38,6 +38,7 @@
                 {% csrf_token %}
                 <table style="color: dark; margin:20px auto;">{{form.as_table}}</table>
                 <button type="submit">Log In</button>
+                <a href="{% url 'password_reset' %}"> Forgot your password</a>
 
             </form>
       </div>
