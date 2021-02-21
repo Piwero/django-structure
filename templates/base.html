@@ -39,6 +39,9 @@
           </li>
           </li>
           {% if user.is_authenticated %}
+          <li class="nav-item {% if request.path == '/auth/secret/' %} active {% endif %}">
+            <a class="nav-link" href="{% url 'secret' %}">Secret Page</a>
+          </li>
            <li class="nav-item {% if request.path == '/auth/logout/' %} active {% endif %}">
             <a class="nav-link" href="{% url 'password_change' %}">Change Password</a>
           </li>
