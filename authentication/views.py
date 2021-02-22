@@ -1,5 +1,12 @@
 from django.shortcuts import render, redirect
+
+# for basic signup form
 from django.contrib.auth.forms import UserCreationForm
+
+# for advanced signup form
+from django.contrib.auth import login, authenticate
+from .forms import SignUpForm
+
 # for login required func
 from django.contrib.auth.decorators import login_required
 
@@ -8,23 +15,18 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
-
-
-
-# Create your views here.
-
-
 def signup(request):
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
             return redirect('home')
-
     else:
-        form = UserCreationForm()
-
+        form = SignUpForm()
     return render(request, "registration/signup.html", {
         "form": form
     })
