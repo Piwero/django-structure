@@ -33,9 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "myproject.coreapp",
-    "services",
-    "contact",
+
     "authentication",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -43,6 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "myproject.coreapp",
+    "services",
+    "contact",
 
 
 ]
