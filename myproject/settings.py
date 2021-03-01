@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "myproject.coreapp",
     "services",
     "contact",
+    "catalogue",
 
 
 ]
