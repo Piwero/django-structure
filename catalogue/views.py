@@ -3,9 +3,9 @@ from .models import Category, Subcategory, Product
 
 
 def catalogue(request):
-    category = Category.objects.all()
-    subcategory = Subcategory.objects.all()
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
     products = Product.objects.all()
 
-    return render(request, 'catalogue.html', {'category': category, 'subcategory': subcategory, 'products': products})
+    return render(request, 'catalogue.html', {'categories': categories, 'subcategories': subcategories, 'products': products})
 

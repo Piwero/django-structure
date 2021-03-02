@@ -27,14 +27,19 @@
     <!-- /.row -->
 
     <!-- Content Row -->
+        {% for category in categories %}
       <div class="row">
-      {% for product in products %}
-
+          <h1>{{category.title}}</h1>
+          {% for subcategory in subcategories %}
+          <div class="row">
       <div class="col-md-4 mb-5">
+          <h3>{{subcategory.title}}</h3>
+          {% for product in products %}
+          {% if product.subcategory == subcategory %}
           <div class="card mb-3 h-100">
           <div class="card-body">
-            <h2 class="card-title">{{product.name}}</h2>
-            <p class="card-text">{{product.reference}} {{product.final_price}}</p>
+            <h4 class="card-title">{{product.name}}</h4>
+            <p class="card-text">{{product.reference}} £{{product.final_price}}</p>
 
             <img src="{{product.image.url}}" class="card-img-bottom" alt="service image">
           </div>
@@ -44,8 +49,8 @@
           </div>
         </div>
       </div>
-
-      {% endfor %}
+      </div>
+            {% endif %}{% endfor %}{% endfor %}{% endfor %}
          </div>
 
 
