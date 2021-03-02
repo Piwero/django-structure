@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Catalogue {% endblock %}
+{% block name %} Catalogue {% endblock %}
+
+{% block content %}
+  <!-- Page Content -->
+{% if categories %}
+<!-- Content Container -->
+  <div class="container">
+      {% for subcategory in subcategories %}
+      <h1>{{subcategory.category}}</h1>
+      <h3>{{subcategory.title}}</h3>
+        <!-- Content Row -->
+
+          <div class="row">
+              <div class="col">
+                  <div class="card-deck">
+                  {% for product in products %}
+              {% if product.subcategory == subcategory %}
+
+                  <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">{{product.name}}</h4>
+                <p class="card-text">{{product.reference}} £{{product.final_price}}</p>
+                <img src="{{product.image.url}}"class="card-img-bottom" alt="service image">
+              </div>
+
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">More Info</a>
+              </div>
+            </div>
+                  {% endif %}{% endfor %}
+              </div>
+                  </div>
+             <!--/.row -->
+          </div>
+
+      <!-- /.container -->
+  </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

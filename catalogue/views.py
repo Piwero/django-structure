@@ -7,5 +7,5 @@ def catalogue(request):
     subcategories = Subcategory.objects.all()
     products = Product.objects.all()
 
-    return render(request, 'catalogue.html', {'categories': categories, 'subcategories': subcategories, 'products': products})
+    return render(request, 'catalogue2.html', {'categories': categories, 'subcategories': subcategories, 'products': products})
 
