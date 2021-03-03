@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "services",
     "contact",
     "catalogue",
+    'widget_tweaks',
 
 
 ]
